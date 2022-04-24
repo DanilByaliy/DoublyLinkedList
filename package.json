@@ -1,0 +1,19 @@
+{
+  "name": "doublylinkedlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanilByaliy/DoublyLinkedList.git"
+  },
+  "author": "Danil Bialyi <byaliy03@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanilByaliy/DoublyLinkedList/issues"
+  },
+  "homepage": "https://github.com/DanilByaliy/DoublyLinkedList#readme"
+}
