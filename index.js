@@ -34,14 +34,18 @@ class List {
   }
 
   append(value) {
-    if (typeof value === 'string') {
-      const penultimate = this.tail;
-      this.tail = new Node(value, penultimate);
+    if (typeof value !== 'string') {
+      console.log(new Error('Invalid value'));
+      return;
+    } 
 
-      if (this.head === null) this.head = this.tail;
-      if (this.tail.prev === null) return;
-      this.tail.prev.next = this.tail;
-    } else console.log(new Error('Invalid value'));
+    const penultimate = this.tail;
+    this.tail = new Node(value, penultimate);
+    if (this.head === null) {
+      this.head = this.tail;
+      return;
+    }
+    penultimate.next = this.tail;
   }
 
   insert(value, number) {
