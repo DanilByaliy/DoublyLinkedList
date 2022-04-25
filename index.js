@@ -84,17 +84,17 @@ class List {
     let current = this.head;
 
     while (counter !== number) {
+      counter += 1;
+      current = current.next;
       if (current === null || number < 0) {
         console.log('Invalid number');
         return;
       }
-      counter += 1;
-      current = current.next;
     };
 
-    if (current === null) {
-      console.log('Invalid number');
-      return;
+    if (current.next === null && counter === 0) {
+      this.head = this.tail = null;
+      return current.value;
     }
 
     const next = current.next;
@@ -121,6 +121,12 @@ class List {
 let list = new List;
 
 list.append('1');
+console.log('lenght1: ' + list.lengthFromHead());
+console.log('------------');
+console.log(list.delete(0));
+console.log('------------');
+console.log('lenght1: ' + list.lengthFromHead());
+console.log('------------');
 list.append('3');
 list.append('4');
 list.insert('2', 1);
@@ -128,7 +134,7 @@ list.insert('0', 0);
 // list.insert('5', 5)
 console.log('lenght1: ' + list.lengthFromHead());
 console.log('------------');
-console.log(list.delete(5));
+console.log(list.delete(0));
 console.log('------------');
 console.log('lenght1: ' + list.lengthFromHead());
 console.log('lenght2: ' + list.lengthFromTail());
