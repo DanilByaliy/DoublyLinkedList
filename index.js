@@ -17,6 +17,7 @@ class List {
     let counter = 0;
     let current = this.tail;
     while (current !== null) {
+      console.log(current.value);
       counter += 1;
       current = current.prev;
     }
@@ -27,6 +28,7 @@ class List {
     let counter = 0;
     let current = this.head;
     while (current !== null) {
+      console.log(current.value);
       counter += 1;
       current = current.next;
     }
@@ -76,16 +78,57 @@ class List {
 
     current.next = next;
   }
+
+  delete(number) {
+    let counter = 0;
+    let current = this.head;
+
+    while (counter !== number) {
+      if (current === null || number < 0) {
+        console.log('Invalid number');
+        return;
+      }
+      counter += 1;
+      current = current.next;
+    };
+
+    if (current === null) {
+      console.log('Invalid number');
+      return;
+    }
+
+    const next = current.next;
+    const prev = current.prev;
+
+    if (next) next.prev = prev;
+    else {
+      prev.next = null;
+      this.tail = prev;
+    }
+
+    if (prev) prev.next = next;
+    else {
+      next.prev = null;
+      this.head = next;
+    }
+
+    return current.value;
+  }
 }
 
 // Usage
 
 let list = new List;
 
-list.append('0');
 list.append('1');
-list.append('2');
-list.insert('0.5', 1);
-list.insert('-1', 0);
+list.append('3');
+list.append('4');
+list.insert('2', 1);
+list.insert('0', 0);
+// list.insert('5', 5)
+console.log('lenght1: ' + list.lengthFromHead());
+console.log('------------');
+console.log(list.delete(5));
+console.log('------------');
 console.log('lenght1: ' + list.lengthFromHead());
 console.log('lenght2: ' + list.lengthFromTail());
