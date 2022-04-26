@@ -114,6 +114,19 @@ class List {
 
     return current.value;
   }
+
+  deleteAll(value) {
+    let counter = 0;
+    let current = this.head;
+    while (current !== null) {
+      if (current.value === value) {
+        this.delete(counter);
+        counter -= 1;
+      }
+      counter += 1;
+      current = current.next;
+    }
+  }
 }
 
 // Usage
