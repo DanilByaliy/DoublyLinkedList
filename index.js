@@ -166,6 +166,33 @@ class List {
     this.head = reverseList.head;
     this.tail = reverseList.tail;
   }
+
+  findFirst(value) {
+    let counter = 0;
+    let current = this.head;
+    while (current !== null) {
+      if (current.value === value) {
+        return counter;
+      }
+      counter += 1;
+      current = current.next;
+    }
+    return -1;
+  }
+
+  findLast(value) {
+    let counter = 0;
+    let current = this.head;
+    let temp = -1;
+    while (current !== null) {
+      if (current.value === value) {
+        temp = counter;
+      }
+      counter += 1;
+      current = current.next;
+    }
+    return temp;
+  }
 }
 
 // Usage
