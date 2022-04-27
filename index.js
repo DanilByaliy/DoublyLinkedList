@@ -127,6 +127,22 @@ class List {
       current = current.next;
     }
   }
+
+  get(number) {
+    let counter = 0;
+    let current = this.head;
+
+    while (counter !== number) {
+      counter += 1;
+      current = current.next;
+      if (current === null || number < 0) {
+        console.log('Invalid number');
+        return;
+      }
+    };
+
+    return current.value;
+  }
 }
 
 // Usage
@@ -151,3 +167,4 @@ console.log(list.delete(0));
 console.log('------------');
 console.log('lenght1: ' + list.lengthFromHead());
 console.log('lenght2: ' + list.lengthFromTail());
+list.append('-5');
