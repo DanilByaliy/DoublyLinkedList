@@ -143,6 +143,29 @@ class List {
 
     return current.value;
   }
+
+  clone() {
+    const newList = new List;
+    let current = this.head;
+
+    while (current !== null) {
+      newList.append(current.value);
+      current = current.next;    
+    }
+    return newList;
+  }
+
+  reverse() {
+    const reverseList = new List;
+    let current = this.tail;
+
+    while (current !== null) {
+      reverseList.append(current.value);
+      current = current.prev;    
+    }
+    this.head = reverseList.head;
+    this.tail = reverseList.tail;
+  }
 }
 
 // Usage
