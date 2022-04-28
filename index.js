@@ -193,6 +193,20 @@ class List {
     }
     return temp;
   }
+
+  clear() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  extend(list) {
+    let current = list.head;
+
+    while (current !== null) {
+      this.append(current.value);
+      current = current.next;    
+    }
+  }
 }
 
 // Usage
