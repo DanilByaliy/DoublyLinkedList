@@ -137,3 +137,47 @@ describe('Delete metod', () => {
     expect(() => list.delete(5)).toThrow('Invalid number');
   })
 })
+
+
+describe('DeleteAll metod', () => {
+  test('must be defined and delete all values passed by the argument', () => {
+    list.append('0');
+    list.append('1');
+    list.append('0');
+
+    list.deleteAll('0');
+
+    expect(list.deleteAll).toBeDefined();
+    expect(list.get(0)).toBe('1');
+    expect(list.get(1)).toBe('1');
+    expect(list.length()).toBe(2);
+  })
+
+  test('must delete all nodes if all have the specified value', () => {
+    list = new List;
+    list.append('0');
+    list.append('0');
+
+    list.deleteAll('0');
+
+    expect(list.length()).toBe(0);
+  })
+
+  test('should not change anything if there are no nodes with this value', () => {
+    list.deleteAll('3');
+
+    expect(list.length()).toBe(2);
+  })
+})
+
+
+describe('Clone metod', () => {
+  test('must be defined and delete all values passed by the argument', () => {
+    const cloneList = list.clone();
+
+    expect(list.clone).toBeDefined();
+    expect(cloneList.get(0)).toBe('0');
+    expect(cloneList.get(1)).toBe('1');
+    expect(() => cloneList.get(2)).toThrow('Invalid number')
+  })
+})
