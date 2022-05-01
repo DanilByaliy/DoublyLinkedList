@@ -1,5 +1,9 @@
 class Node {
   constructor(value, prev) {
+    if (typeof value !== 'string' || value.length > 1) {
+      throw new Error('Invalid value');
+    } 
+
     return { 
       value: value, 
       prev: prev, 
@@ -13,22 +17,10 @@ class List {
     this.tail = null;
   }
 
-  lengthFromTail() {
-    let counter = 0;
-    let current = this.tail;
-    while (current !== null) {
-      console.log(current.value);
-      counter += 1;
-      current = current.prev;
-    }
-    return counter;
-  }
-
-  lengthFromHead() {
+  length() {
     let counter = 0;
     let current = this.head;
     while (current !== null) {
-      console.log(current.value);
       counter += 1;
       current = current.next;
     }
@@ -36,11 +28,6 @@ class List {
   }
 
   append(value) {
-    if (typeof value !== 'string') {
-      console.log(new Error('Invalid value'));
-      return;
-    } 
-
     const penultimate = this.tail;
     this.tail = new Node(value, penultimate);
     if (this.head === null) {
@@ -56,8 +43,7 @@ class List {
 
     while (counter !== number) {
       if (current === null || number < 0) {
-        console.log('Invalid number');
-        return;
+        throw new Error('Invalid number');
       }
       counter += 1;
       current = current.next;
@@ -87,8 +73,7 @@ class List {
       counter += 1;
       current = current.next;
       if (current === null || number < 0) {
-        console.log('Invalid number');
-        return;
+        throw new Error('Invalid number');
       }
     };
 
@@ -132,16 +117,20 @@ class List {
     let counter = 0;
     let current = this.head;
 
+    if (number < 0) {
+      throw new Error('Invalid number');
+    }
+    
     while (counter !== number) {
+      if (current === null) {
+        throw new Error('Invalid number');
+      }
       counter += 1;
       current = current.next;
-      if (current === null || number < 0) {
-        console.log('Invalid number');
-        return;
-      }
     };
 
-    return current.value;
+    if (current !== null) return current.value;
+    throw new Error('Invalid number');
   }
 
   clone() {
