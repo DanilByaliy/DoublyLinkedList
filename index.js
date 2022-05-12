@@ -5,7 +5,7 @@ class Node {
     } 
 
     return { 
-      value: valuee, 
+      value: value, 
       prev: prev, 
       next: null };
   }
