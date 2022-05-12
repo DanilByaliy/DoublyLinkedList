@@ -200,26 +200,24 @@ class List {
 
 module.exports = List;
 
+ 
 // Usage
 
-// let list = new List;
+let list = new List;
 
-// list.append('1');
-// console.log('lenght1: ' + list.lengthFromHead());
-// console.log('------------');
-// console.log(list.delete(0));
-// console.log('------------');
-// console.log('lenght1: ' + list.lengthFromHead());
-// console.log('------------');
-// list.append('3');
-// list.append('4');
-// list.insert('2', 1);
-// list.insert('0', 0);
-// // list.insert('5', 5)
-// console.log('lenght1: ' + list.lengthFromHead());
-// console.log('------------');
-// console.log(list.delete(0));
-// console.log('------------');
-// console.log('lenght1: ' + list.lengthFromHead());
-// console.log('lenght2: ' + list.lengthFromTail());
-// list.append('-5');
+const values = ['a', 'b', 'c', 'd'];
+values.forEach((value) => list.append(value)); // 'a' - 'b' - 'c' - 'd'
+
+list.insert('b', 3); // 'a' - 'b' - 'c' - 'b' - 'd'
+list.length(); // 5
+list.delete(0); // 'b' - 'c' - 'b' - 'd'
+list.deleteAll('b'); // 'c' - 'd'
+list.get(1); // 'd'
+const cloneList = list.clone(); // 'c' - 'd'
+list.reverse(); // 'd' - 'c'
+list.append('d'); // 'd' - 'c' - 'd'
+list.findFirst('d'); // 0
+list.findLast('d'); // 2
+list.extend(cloneList); // 'd' - 'c' - 'd' - 'c' - 'd'
+list.clear(); // ---
+cloneList.clear(); // ---
